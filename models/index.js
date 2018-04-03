@@ -7,6 +7,7 @@ module.exports = server => {
     // 2. attach models to the server
     server.models = {
         User: require('./User'),
-        Token: require('./Token')
+        Token: require('./Token'),
+        Challenge: require('./Challenge')
     }
 };

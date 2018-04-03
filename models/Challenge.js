@@ -25,4 +25,4 @@ const ChallengeSchema = Schema({
 
 const Challenge = mongoose.model('Challenge', UserSchema);
 
-module.exports = User;
+module.exports = Challenge;
