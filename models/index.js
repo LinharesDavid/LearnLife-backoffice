@@ -8,6 +8,7 @@ module.exports = server => {
     server.models = {
         User: require('./User'),
         Token: require('./Token'),
-        Challenge: require('./Challenge')
+        Challenge: require('./Challenge'),
+        UserChallenge: require('./UserChallenge')
     }
 };
