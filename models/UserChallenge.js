@@ -1,18 +1,27 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const States = {
+    PROPOSED: 0,
+    DECLINED: 1,
+    ACCEPTED: 2,
+    FAILED: 3,
+    SUCCEED: 4
+};
+
 const UserChallengeSchema = Schema({
     challenge: {
-        type: Schema.type.ObjectId,
+        type: Schema.Types.ObjectId,
         required: true,
     },
     user: {
-        type: Schema.type.ObjectId,
+        type: Schema.Types.ObjectId,
         required: true
     },
     state: {
         type: Number,
-        required: true
+        required: true,
+        defaultValue: States.PROPOSED
     }
 });
 

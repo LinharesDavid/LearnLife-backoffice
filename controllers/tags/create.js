@@ -1,11 +1,11 @@
 module.exports = server => {
-    const Challenge = server.models.Challenge;
+    const Tag = server.models.Tag;
 
     return (req, res, next) => {
         const data = req.body;
 
-        Challenge.create(data)
-            .then(challenge => res.status(201).send(challenge))
+        Tag.create(data)
+            .then(tag => res.status(201).send(tag))
             .catch(err => res.status(500).send(err.message || err));
     }
 };

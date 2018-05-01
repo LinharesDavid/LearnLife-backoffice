@@ -9,6 +9,9 @@ module.exports = server => {
         User: require('./User'),
         Token: require('./Token'),
         Challenge: require('./Challenge'),
-        UserChallenge: require('./UserChallenge')
+        UserChallenge: require('./UserChallenge'),
+        Category: require('./Category'),
+        Tag: require('./Tag'),
+        Badge: require('./Badge')
     }
 };

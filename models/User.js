@@ -23,7 +23,15 @@ const UserSchema = Schema({
     age: {
         type: Number,
         required: false
-    }
+    },
+    userChallenges: [{
+        type: Schema.Types.ObjectId,
+        required: false
+    }],
+    tags: [{
+        type: Schema.Types.ObjectId,
+        required: false
+    }]
 });
 
 const User = mongoose.model('User', UserSchema);

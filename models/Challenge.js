@@ -16,13 +16,26 @@ const ChallengeSchema = Schema({
         type: Number,
         required: true
     },
-    duration: {
+    startDate: {
         type: Date,
-        required: true,
-        timestamp: true
+    },
+    endDate: {
+        type:Date,
+    },
+    duration: {
+        type: Number,
+        required: true
+    },
+    tags: [{
+        type: Schema.Types.ObjectId,
+        required: true
+    }],
+    Badge: {
+        type: Schema.Types.ObjectId,
+        required: false
     }
 });
 
-const Challenge = mongoose.model('Challenge', UserSchema);
+const Challenge = mongoose.model('Challenge', ChallengeSchema);
 
 module.exports = Challenge;
