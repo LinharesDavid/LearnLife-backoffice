@@ -10,7 +10,7 @@ module.exports = server => {
 
         User.findOne()
             .where({
-                username: req.body.username,
+                email: req.body.email,
                 password: sha1(req.body.password)
             })
             .then(u => user = u || Promise.reject({ code: 404, message: 'user not found' }))
