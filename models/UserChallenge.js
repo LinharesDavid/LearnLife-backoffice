@@ -21,7 +21,7 @@ const UserChallengeSchema = Schema({
     state: {
         type: Number,
         required: true,
-        defaultValue: States.PROPOSED
+        default: States.PROPOSED
     }
 });
 

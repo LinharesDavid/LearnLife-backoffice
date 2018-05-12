@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/LinharesDavid/LearnLife-backoffice",
   "dependencies": {
+    "array-events": "^1.0.0",
+    "bluebird": "^3.5.1",
     "body-parser": "1.18.2",
     "chai": "^4.1.2",
     "express": "4.16.2",

@@ -3,8 +3,12 @@ const router = require('express').Router();
 module.exports = server => {
     router
         .get('/:id',
-            server.controllers.challenges.get
+            server.controllers.userchallenges.get
+        )
+        .post('/',
+            server.middlewares.bodyParser.json(),
+            server.controllers.userchallenges.create
         )
 
-    server.use('/challenges', router);
+    server.use('/userchallenges', router);
 };
