@@ -45,12 +45,16 @@ module.exports = server => {
         }
 
         function findUserChallenge(challenge) {
-            return UserChallenge.findOne({user: userId, challenge: challenge.id});
+            return UserChallenge
+                .findOne({user: userId, challenge: challenge.id})
+                .populate({path: 'challenge'});
         }
 
 
         function createUserChallenge(challenge) {
-            return UserChallenge.create({user: userId, challenge: challenge.id, state: States.PROPOSED});
+            return UserChallenge
+                .create({user: userId, challenge: challenge.id, state: States.PROPOSED})
+                .populate({path: 'challenge'});
         }
 
         function isUserChallengeValid(userChallenge) {

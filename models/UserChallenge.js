@@ -12,10 +12,12 @@ const States = {
 const UserChallengeSchema = Schema({
     challenge: {
         type: Schema.Types.ObjectId,
+        ref: 'Challenge',
         required: true,
     },
     user: {
         type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     state: {

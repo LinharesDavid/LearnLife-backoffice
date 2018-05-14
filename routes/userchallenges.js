@@ -3,7 +3,7 @@ const router = require('express').Router();
 module.exports = server => {
     router
         .get('/:id',
-            server.middlewares.ensureAuthenticated,
+            //server.middlewares.ensureAuthenticated,
             server.controllers.userchallenges.get
         )
         .post('/',
