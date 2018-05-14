@@ -5,15 +5,14 @@ The BackOffice used for all LearnLife applications routes.
 # ***How to***
 
 ## Models
-    * User
-    * Challenge
-    * Badge
-    * Token
-    * Category
-    * Tag
-    * UserChallenge
+* [User](#users-routes)
+* [Challenge](#other-routes)
+* [Badge](#other-routes)
+* [Category](#other-routes)
+* [Tag](#other-routes)
+* [UserChallenge](#uc-routes)
 
-## User
+## User  <a id="users-routes"></a>
 
 ***Create***
 
@@ -124,11 +123,11 @@ The BackOffice used for all LearnLife applications routes.
         "userChallenges": []
     }
 
-## BADGE, CHALLENGE, CATEGORY, TAGS
+## BADGE, CHALLENGE, CATEGORY, TAGS <a id="others-routes"></a>
 
 *Same as user just replace '/users' by '/badges', '/challenges', '/tags', '/categories'.*
 
-## UserChallenge
+## UserChallenge <a id="uc-routes"></a>
 
 ***Get***
 > *Route [GET] : '/userChallenges/:id'*
