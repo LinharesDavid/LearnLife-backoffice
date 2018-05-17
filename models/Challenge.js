@@ -12,6 +12,10 @@ const ChallengeSchema = Schema({
         required: true,
         select: false
     },
+    imageUrl:{
+        type: String,
+        required: true
+    },
     pointsGiven: {
         type: Number,
         required: true
