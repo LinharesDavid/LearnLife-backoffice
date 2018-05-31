@@ -4,6 +4,7 @@ module.exports = server => {
         accept: require('./accept')(server),
         declined: require('./declined')(server),
         succeed: require('./succeed')(server),
-        failed: require('./failed')(server)
+        failed: require('./failed')(server),
+        getAllForUser: require('./getAllForUser')(server)
     };
 };
