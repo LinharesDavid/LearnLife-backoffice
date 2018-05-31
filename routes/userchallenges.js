@@ -6,6 +6,10 @@ module.exports = server => {
             server.middlewares.ensureAuthenticated,
             server.controllers.userchallenges.get
         )
+        .get('/getAllForUser/:id',
+            server.middlewares.ensureAuthenticated,
+            server.controllers.userchallenges.getAllForUser
+        )
         .post('/',
             server.middlewares.bodyParser.json(),
             server.middlewares.ensureAuthenticated,
