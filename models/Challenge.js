@@ -9,8 +9,7 @@ const ChallengeSchema = Schema({
     },
     details: {
         type: String,
-        required: true,
-        select: false
+        required: true
     },
     imageUrl:{
         type: String,
