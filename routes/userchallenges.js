@@ -6,10 +6,9 @@ module.exports = server => {
             //server.middlewares.ensureAuthenticated,
             server.controllers.userchallenges.get
         )
-        .post('/',
-            server.middlewares.bodyParser.json(),
-            server.middlewares.ensureAuthenticated,
-            server.controllers.userchallenges.create
+        .get('/:userId/list',
+            //server.middlewares.ensureAuthenticated,
+            server.controllers.userchallenges.user_list
         )
         .put('/:id/accept',
             server.middlewares.ensureAuthenticated,
