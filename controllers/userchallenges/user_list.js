@@ -2,9 +2,9 @@ module.exports = server => {
     const UserChallenge = server.models.UserChallenge;
 
     return (req, res, next) => {
-        UserChallenge.find({user: req.params.userId})
+        UserChallenge.find({userId: req.params.id})
             .populate({path: 'challenge'})
             .then(uc => res.send(uc))
-            .catch(error => res.status(500).send(error.message || error))
+            .catch(err => err.message || err)
     }
 };
