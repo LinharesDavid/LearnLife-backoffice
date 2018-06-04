@@ -123,7 +123,7 @@ The BackOffice used for all LearnLife applications routes.
         "userChallenges": []
     }
 
-## BADGE, CHALLENGE, CATEGORY, TAGS <a id="others-routes"></a>
+## BADGE, CHALLENGE, CATEGORY, TAGS <a id="other-routes"></a>
 
 *Same as user just replace '/users' by '/badges', '/challenges', '/tags', '/categories'.*
 
