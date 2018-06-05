@@ -23,7 +23,9 @@ module.exports = server => {
 
         function getUserChallenges(challenges) {
             let collection = [];
-            let finalCollectionLegth = challenges.length;
+            let finalCollectionLength = challenges.length;
+            
+            if(finalCollectionLength == 0) return collection;
 
             return new Promise(resolve => {
                 challenges.forEach(c => {
@@ -33,10 +35,10 @@ module.exports = server => {
                             if (isUserChallengeValid(uc))
                                 collection.push(uc);
                             else
-                                finalCollectionLegth--;
+                                finalCollectionLength--;
                         })
                         .then(() => {
-                            if (collection.length == finalCollectionLegth) {
+                            if (collection.length == finalCollectionLength) {
                                 resolve(collection);
                             }
                         })
