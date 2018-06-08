@@ -16,7 +16,12 @@ module.exports = server => {
             .then(u => user = u || Promise.reject({ code: 404, message: 'user not found' }))
             .then(ensureLimitNotExceeded)
             .then(encrypt)
-            .then(encryptedToken => res.send({"token" : encryptedToken, "user_id" : user._id}))
+            .then(encryptedToken => res.send(
+                {
+                    "token" : encryptedToken,
+                    "user_id" : user._id,
+                    "firstname" : user.firstName
+                }))
             .catch(error => res.status(error.code || 500).send(error.message || error));
 
 
