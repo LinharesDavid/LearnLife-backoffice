@@ -20,7 +20,8 @@ module.exports = server => {
                 {
                     "token" : encryptedToken,
                     "user_id" : user._id,
-                    "firstname" : user.firstName
+                    "firstname" : user.firstName,
+                    "tagCount": user.tags.length
                 }))
             .catch(error => res.status(error.code || 500).send(error.message || error));
 
