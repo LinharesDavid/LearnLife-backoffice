@@ -31,7 +31,11 @@ const UserSchema = Schema({
     tags: [{
         type: Schema.Types.ObjectId,
         required: false
-    }]
+    }],
+    thumbnail: {
+        type: Schema.Types.Mixed,
+        required: false
+    }
 });
 
 const User = mongoose.model('User', UserSchema);
