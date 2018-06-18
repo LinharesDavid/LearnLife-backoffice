@@ -20,6 +20,7 @@ sudo tar xzvf ~/Desktop/learn-life-d.tar.gz -C /
 ```
 
 ### Run mongo on this folder
+In another terminal of course
 
 ```
 sudo mongod --dbpath /data/learn-life-db/
