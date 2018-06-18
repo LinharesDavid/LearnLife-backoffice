@@ -24,10 +24,15 @@ const UserSchema = Schema({
         type: Number,
         required: false
     },
-    userChallenges: [{
-        type: Schema.Types.ObjectId,
-        required: false
+    badges: [{
+       type: Schema.Types.ObjectId,
+       required: false
     }],
+    points: {
+        type: Number,
+        required: false,
+        defaultValue: 0
+    },
     tags: [{
         type: Schema.Types.ObjectId,
         required: false
