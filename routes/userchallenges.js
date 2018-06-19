@@ -3,11 +3,11 @@ const router = require('express').Router();
 module.exports = server => {
     router
         .get('/:id',
-            server.middlewares.ensureAuthenticated,
+            //server.middlewares.ensureAuthenticated,
             server.controllers.userchallenges.get
         )
         .get('/:userId/list',
-            server.middlewares.ensureAuthenticated,
+            //server.middlewares.ensureAuthenticated,
             server.controllers.userchallenges.user_list
         )
         .put('/:id/accept',
@@ -19,7 +19,7 @@ module.exports = server => {
             server.controllers.userchallenges.declined
         )
         .put('/:id/succeed',
-            server.middlewares.ensureAuthenticated,
+            //server.middlewares.ensureAuthenticated,
             server.controllers.userchallenges.succeed
         )
         .put('/:id/failed',

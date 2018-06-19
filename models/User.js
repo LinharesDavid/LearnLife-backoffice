@@ -25,8 +25,10 @@ const UserSchema = Schema({
         required: false
     },
     badges: [{
-       type: Schema.Types.ObjectId,
-       required: false
+        type: Schema.Types.ObjectId,
+        ref: 'Badge',
+        required: false,
+        select: true
     }],
     points: {
         type: Number,
