@@ -8,21 +8,16 @@ module.exports = server => {
     return (req, res, next) => {
         let user;
 
-        User.findOne()
-            .where({
-                email: req.body.email,
-                password: sha1(req.body.password)
-            })
+        User.findOne({email: req.body.email, password: sha1(req.body.password)})
+            .populate({path: 'badges'})
+            .populate({path: 'tags'})
             .then(u => user = u || Promise.reject({ code: 404, message: 'user not found' }))
             .then(ensureLimitNotExceeded)
             .then(encrypt)
             .then(encryptedToken => res.send(
                 {
                     "token" : encryptedToken,
-                    "user_id" : user._id,
-                    "firstname" : user.firstName,
-                    "email" : user.email,
-                    "tagCount": user.tags.length
+                    user
                 }))
             .catch(error => res.status(error.code || 500).send(error.message || error));
 

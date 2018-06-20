@@ -37,6 +37,7 @@ const UserSchema = Schema({
     },
     tags: [{
         type: Schema.Types.ObjectId,
+        ref: 'Tag',
         required: false
     }],
     thumbnail: {

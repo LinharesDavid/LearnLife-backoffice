@@ -5,26 +5,25 @@ module.exports = server => {
     const User = server.models.User;
     const Challenge = server.models.Challenge;
     const Badge = server.models.Badge;
-    let userPoints = 0;
     let user;
-    let challenge;
     let earnedBadges = [];
 
     return (req, res, next) => {
         UserChallenge.findByIdAndUpdate(req.params.id, { $set : { state:  SUCCEED }})
+            .populate({path: 'challenge'})
+            .populate({path: 'user'})
             .then(uc => appendPointsToUser(uc))
-            .then(appendBadgesToUser)
+            .then(u => {
+                user = u;
+                return appendBadgesToUser();
+            })
             .then(() => res.send(earnedBadges))
             .catch(error => res.status(500).send(error.message || error))
     }
 
     function appendPointsToUser(userChallenge) {
         userId = userChallenge.user;
-        return getUserPoints(userId)
-            .then(points => userPoints = points)
-            .then(() => getChallengePoints(userChallenge.challenge))
-            .then(points => userPoints += points)
-            .then(() => updateUserPoints(userPoints));
+        return updateUserPoints(userId ,userChallenge.challenge.pointsGiven + userChallenge.user.points);
     }
 
     function getUserPoints(userId) {
@@ -33,21 +32,14 @@ module.exports = server => {
             .then(() => user.points)
     }
 
-    function getChallengePoints(challengeId) {
-            return Challenge.findById(challengeId)
-                .then(c => challenge = c)
-                .then(() => challenge.pointsGiven);
-    }
-
-    function updateUserPoints(points) {
-        user.points = points;
-        user.save();
+    function updateUserPoints(userId ,points) {
+        return User.findByIdAndUpdate(userId, {points: points})
     }
 
     function retrieveBadges() {
         let badges = [];
         return Badge
-            .find({achievementPoints: {$lte : userPoints}})
+            .find({achievementPoints: {$lte : user.points}})
             .then(b => badges = b)
             .then(() => getUserBadges())
             .then(b => {

@@ -8,10 +8,12 @@ const TagSchema = Schema({
     },
     tagAssociated: [{
         type: Schema.Types.ObjectId,
+        ref: 'Tag',
         required: false
     }],
     category: {
         type: Schema.Types.ObjectId,
+        ref: 'Category',
         required: true
     }
 
