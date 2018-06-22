@@ -31,11 +31,13 @@ const ChallengeSchema = Schema({
     },
     tags: [{
         type: Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref: 'Tag'
     }],
     Badge: {
         type: Schema.Types.ObjectId,
-        required: false
+        required: false,
+        ref: 'Badge'
     }
 });
 

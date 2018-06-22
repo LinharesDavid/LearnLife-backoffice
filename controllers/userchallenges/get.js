@@ -11,12 +11,19 @@ module.exports = server => {
     const Challenge = server.models.Challenge;
     const User = server.models.User;
     const UserChallenge = server.models.UserChallenge;
+    const Tag = server.models.Tag;
 
     return (req, res, next) => {
         let userId = req.params.id;
+        let user;
 
         User.findById(req.params.id)
-            .then(user => Challenge.find({ tags : { $in : user.tags }}))
+            .populate({path: 'tags'})
+            .then(u => {
+                user = u;
+                return getChallenges(user.tags);
+            })
+            .then(challenges => (challenges.length != 0) ? challenges : getClosestChallenges(user.tags))
             .then(challenges => getUserChallenges(challenges))
             .then(userChallenges => res.send(userChallenges))
             .catch(error => res.status(500).send(error.message || error))
@@ -24,7 +31,7 @@ module.exports = server => {
         function getUserChallenges(challenges) {
             let collection = [];
             let finalCollectionLength = challenges.length;
-            
+
             if(finalCollectionLength == 0) return collection;
 
             return new Promise(resolve => {
@@ -46,6 +53,23 @@ module.exports = server => {
             });
         }
 
+        function getChallenges(tags) {
+            return Challenge
+                .find({ tags : { $in : tags || user.tags }})
+                .populate({path: 'tags'});
+        }
+
+        function getClosestChallenges(tags) {
+            categories = [];
+            for(let j = 0; j < tags.length; j++) {
+                categories.push(tags[j].category)
+            }
+
+            return Tag.find({category: {$in: categories}})
+                .then(tags => getChallenges(tags))
+                .then(challenge => challenge);
+        }
+
         function findUserChallenge(challenge) {
             return UserChallenge
                 .findOne({user: userId, challenge: challenge.id})
@@ -56,7 +80,7 @@ module.exports = server => {
         function createUserChallenge(challenge) {
             return UserChallenge
                 .create({user: userId, challenge: challenge.id, state: States.PROPOSED})
-                .populate({path: 'challenge'});
+                .then(uc => UserChallenge.findById(uc.id).populate({path: 'challenge'}));
         }
 
         function isUserChallengeValid(userChallenge) {
