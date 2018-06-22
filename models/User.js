@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const Roles = {
+    USER: 0,
+    ADMINISTRATOR: 1
+};
+
 const UserSchema = Schema({
     email: {
         type: String,
@@ -43,6 +48,11 @@ const UserSchema = Schema({
     thumbnail: {
         type: Schema.Types.Mixed,
         required: false
+    },
+    role: {
+        type: Number,
+        required: true,
+        defaultValue: Roles.USER
     }
 });
 

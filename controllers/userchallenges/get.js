@@ -23,16 +23,16 @@ module.exports = server => {
                 user = u;
                 return getChallenges(user.tags);
             })
-            .then(challenges => (challenges.length != 0) ? challenges : getClosestChallenges(user.tags))
+            .then(challenges => (challenges.length !== 0) ? challenges : getClosestChallenges(user.tags))
             .then(challenges => getUserChallenges(challenges))
             .then(userChallenges => res.send(userChallenges))
-            .catch(error => res.status(500).send(error.message || error))
+            .catch(error => res.status(500).send(error.message || error));
 
         function getUserChallenges(challenges) {
             let collection = [];
             let finalCollectionLength = challenges.length;
 
-            if(finalCollectionLength == 0) return collection;
+            if(finalCollectionLength === 0) return collection;
 
             return new Promise(resolve => {
                 challenges.forEach(c => {
@@ -45,7 +45,7 @@ module.exports = server => {
                                 finalCollectionLength--;
                         })
                         .then(() => {
-                            if (collection.length == finalCollectionLength) {
+                            if (collection.length === finalCollectionLength) {
                                 resolve(collection);
                             }
                         })
@@ -56,7 +56,8 @@ module.exports = server => {
         function getChallenges(tags) {
             return Challenge
                 .find({ tags : { $in : tags || user.tags }})
-                .populate({path: 'tags'});
+                .populate({path: 'tags'})
+                .then(challenges => challenges.filter(c => !c.user || c.verified || c.user == userId));
         }
 
         function getClosestChallenges(tags) {
@@ -84,7 +85,7 @@ module.exports = server => {
         }
 
         function isUserChallengeValid(userChallenge) {
-            return userChallenge.state == States.PROPOSED;
+            return userChallenge.state === States.PROPOSED;
         }
     }
 };

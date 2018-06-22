@@ -38,6 +38,16 @@ const ChallengeSchema = Schema({
         type: Schema.Types.ObjectId,
         required: false,
         ref: 'Badge'
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        required: false,
+        ref: 'User'
+    },
+    verified: {
+        type: Number,
+        required: false,
+        defaultValue: 0
     }
 });
 
