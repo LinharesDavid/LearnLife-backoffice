@@ -34,7 +34,7 @@ const ChallengeSchema = Schema({
         required: true,
         ref: 'Tag'
     }],
-    Badge: {
+    badge: {
         type: Schema.Types.ObjectId,
         required: false,
         ref: 'Badge'
