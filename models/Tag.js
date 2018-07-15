@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const TagSchema = Schema({
     name: {
       type: String,
-      required: true
+      required: true,
+      unique: true
     },
     tagAssociated: [{
         type: Schema.Types.ObjectId,
