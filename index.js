@@ -1,4 +1,5 @@
-const server = require('express')();
+const express = require('express');
+const server = express();
 
 require('./settings')(server);      // Loading settings
 require('./models')(server);        // Loading models
@@ -7,4 +8,5 @@ require('./controllers')(server);   // Loading controllers
 require('./routes')(server);        // Loading routes
 
 server.listen(server.settings.port);
+
 console.log(`Server is listening on port ${server.settings.port}`);

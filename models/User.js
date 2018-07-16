@@ -38,21 +38,20 @@ const UserSchema = Schema({
     points: {
         type: Number,
         required: false,
-        defaultValue: 0
+        default: 0
     },
     tags: [{
         type: Schema.Types.ObjectId,
         ref: 'Tag',
         required: false
     }],
-    thumbnail: {
-        type: Schema.Types.Mixed,
-        required: false
+    thumbnailUrl: {
+        type: String,
+        default: "/medias/challenges/f7974661878d4fea8c87ba33e41cc6ac"
     },
     role: {
         type: Number,
-        required: true,
-        defaultValue: Roles.USER
+        default: Roles.USER
     }
 });
 

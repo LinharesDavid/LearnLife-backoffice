@@ -1,6 +1,9 @@
 const router = require('express').Router();
+const multer = require('multer');
+const upload = multer({ dest: 'public/medias/users/' });
 
 module.exports = server => {
+
     router
         .get('/:id',
             server.controllers.users.show
@@ -13,6 +16,12 @@ module.exports = server => {
         .post('/',
             server.middlewares.bodyParser.json(),
             server.controllers.users.create
+        )
+
+        .put('/:id/thumbnail',
+            upload.single('image'),
+            server.controllers.users.thumbnail
+
         )
 
         .put('/:id',

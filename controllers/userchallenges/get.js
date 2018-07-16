@@ -58,6 +58,7 @@ module.exports = server => {
                 .find({ tags : { $in : tags || user.tags }})
                 .populate({path: 'tags'})
                 .then(challenges => challenges.filter(c => !c.user || c.verified || c.user == userId));
+
         }
 
         function getClosestChallenges(tags) {
@@ -67,8 +68,7 @@ module.exports = server => {
             }
 
             return Tag.find({category: {$in: categories}})
-                .then(tags => getChallenges(tags))
-                .then(challenge => challenge);
+                .then(tags => getChallenges(tags));
         }
 
         function findUserChallenge(challenge) {

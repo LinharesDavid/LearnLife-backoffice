@@ -12,9 +12,9 @@ const BadgeSchema = Schema({
         required: true,
         select: false
     },
-    thumbnail: {
+    thumbnailUrl: {
         type: Schema.Types.Mixed,
-        required: true
+        default: "/medias/badges/e0d15640e3ca47443c618a0ef1947a30"
     },
     achievementPoints: {
       type: Number,

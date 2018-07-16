@@ -6,4 +6,6 @@ module.exports = server => {
     require('./badges')(server);
     require('./tags')(server);
     require('./userchallenges')(server);
+    require('./uservotes')(server);
+    require('./medias')(server);
 };

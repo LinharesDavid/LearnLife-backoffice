@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UserVotesSchema = Schema({
+const UserVoteSchema = Schema({
     challenge: {
         type: Schema.Types.ObjectId,
         ref: 'Challenge',
@@ -14,6 +14,6 @@ const UserVotesSchema = Schema({
     }
 });
 
-const UserVotes = mongoose.model('UserVotes', UserVotesSchema);
+const UserVote = mongoose.model('UserVote', UserVoteSchema);
 
-module.exports = UserVotes;
+module.exports = UserVote;

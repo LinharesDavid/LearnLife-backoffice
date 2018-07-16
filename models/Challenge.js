@@ -5,7 +5,7 @@ const ChallengeSchema = Schema({
     name: {
         type: String,
         required: true,
-        unique: true
+
     },
     details: {
         type: String,
@@ -13,7 +13,7 @@ const ChallengeSchema = Schema({
     },
     imageUrl:{
         type: String,
-        required: true
+        default: "/medias/challenges/a0d5bd9b2617aebdb7c6f3e55935f6a9"
     },
     pointsGiven: {
         type: Number,
@@ -46,8 +46,7 @@ const ChallengeSchema = Schema({
     },
     verified: {
         type: Number,
-        required: false,
-        defaultValue: 0
+        default: 0
     }
 });
 

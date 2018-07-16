@@ -12,6 +12,7 @@ module.exports = server => {
         UserChallenge: require('./UserChallenge'),
         Category: require('./Category'),
         Tag: require('./Tag'),
-        Badge: require('./Badge')
+        Badge: require('./Badge'),
+        UserVote: require('./UserVote')
     }
 };
