@@ -18,7 +18,8 @@ module.exports = server => {
             server.controllers.users.create
         )
 
-        .put('/:id/thumbnail',
+        .post
+        ('/:id/thumbnail',
             upload.single('image'),
             server.controllers.users.thumbnail
 

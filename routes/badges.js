@@ -22,7 +22,7 @@ module.exports = server => {
             server.controllers.badges.update
         )
 
-        .put('/:id/image',
+        .post('/:id/image',
             upload.single('image'),
             server.controllers.badges.thumbnail
         )

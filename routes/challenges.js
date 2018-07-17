@@ -25,7 +25,7 @@ module.exports = server => {
             server.controllers.challenges.create
         )
 
-        .put('/:id/image',
+        .post('/:id/image',
             upload.single('image'),
             server.controllers.challenges.image
         )
