@@ -14,7 +14,7 @@ const BadgeSchema = Schema({
     },
     thumbnailUrl: {
         type: Schema.Types.Mixed,
-        default: "/medias/badges/e0d15640e3ca47443c618a0ef1947a30"
+        default: "/medias/defaults/839788b2d09ca200849ba79244cb8cff"
     },
     achievementPoints: {
       type: Number,

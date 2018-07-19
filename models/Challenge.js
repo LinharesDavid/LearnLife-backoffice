@@ -13,7 +13,7 @@ const ChallengeSchema = Schema({
     },
     imageUrl:{
         type: String,
-        default: "/medias/challenges/a0d5bd9b2617aebdb7c6f3e55935f6a9"
+        default: "/medias/defaults/929c39aeefaff5eef874546db98689d0"
     },
     pointsGiven: {
         type: Number,

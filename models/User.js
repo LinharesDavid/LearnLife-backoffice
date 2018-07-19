@@ -47,7 +47,7 @@ const UserSchema = Schema({
     }],
     thumbnailUrl: {
         type: String,
-        default: "/medias/challenges/f7974661878d4fea8c87ba33e41cc6ac"
+        default: "/medias/defaults/8c8c01f66ce8a4b5191eb11cb903cafb"
     },
     role: {
         type: Number,
