@@ -9,8 +9,7 @@ const BadgeSchema = Schema({
     },
     description: {
         type: String,
-        required: true,
-        select: false
+        required: true
     },
     thumbnailUrl: {
         type: Schema.Types.Mixed,
