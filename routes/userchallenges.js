@@ -11,7 +11,7 @@ module.exports = server => {
             server.controllers.userchallenges.user_list
         )
         .put('/:id/accept',
-            server.middlewares.ensureAuthenticated,
+            //server.middlewares.ensureAuthenticated,
             server.controllers.userchallenges.accept
         )
         .put('/:id/declined',

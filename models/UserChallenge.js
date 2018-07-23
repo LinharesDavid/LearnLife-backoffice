@@ -24,7 +24,13 @@ const UserChallengeSchema = Schema({
         type: Number,
         required: true,
         default: States.PROPOSED
-    }
+    },
+    startDate: {
+        type: Date,
+    },
+    endDate: {
+        type:Date,
+    },
 });
 
 const UserChallenge = mongoose.model('UserChallenge', UserChallengeSchema);

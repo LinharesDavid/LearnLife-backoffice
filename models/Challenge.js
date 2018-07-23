@@ -19,12 +19,6 @@ const ChallengeSchema = Schema({
         type: Number,
         required: true
     },
-    startDate: {
-        type: Date,
-    },
-    endDate: {
-        type:Date,
-    },
     duration: {
         type: Number,
         required: true
