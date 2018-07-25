@@ -46,7 +46,11 @@ module.exports = server => {
                         })
                         .then(() => {
                             if (collection.length === finalCollectionLength) {
-                                resolve(collection);
+                                if(finalCollectionLength === 0)
+                                    resolve(getClosestChallenges(user.tags)
+                                        .then(challenges => getUserChallenges(challenges)));
+                                else
+                                    resolve(collection);
                             }
                         })
                 })

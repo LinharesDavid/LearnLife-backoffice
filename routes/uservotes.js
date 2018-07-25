@@ -7,13 +7,13 @@ module.exports = server => {
         )
 
         .get('/:id',
-            //server.middlewares.ensureAuthenticated,
+            server.middlewares.ensureAuthenticated,
             server.controllers.uservotes.user_list
         )
 
         .post('/',
             server.middlewares.bodyParser.json(),
-            //server.middlewares.ensureAuthenticated,
+            server.middlewares.ensureAuthenticated,
             server.controllers.uservotes.create
         );
 
