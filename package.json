@@ -4,8 +4,7 @@
   "description": "Making life better",
   "main": "playground.js",
   "scripts": {
-    "start": "node index",
-    "test": "mocha"
+    "start": "node index"
   },
   "repository": {
     "type": "git",
