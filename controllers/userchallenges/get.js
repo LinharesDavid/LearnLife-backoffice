@@ -16,6 +16,7 @@ module.exports = server => {
     return (req, res, next) => {
         let userId = req.params.id;
         let user;
+        let noMoreChallenges = 0;
 
         User.findById(req.params.id)
             .populate({path: 'tags'})
@@ -46,9 +47,11 @@ module.exports = server => {
                         })
                         .then(() => {
                             if (collection.length === finalCollectionLength) {
-                                if(finalCollectionLength === 0)
+                                if(finalCollectionLength === 0 && !noMoreChallenges) {
+                                    noMoreChallenges = 1;
                                     resolve(getClosestChallenges(user.tags)
                                         .then(challenges => getUserChallenges(challenges)));
+                                }
                                 else
                                     resolve(collection);
                             }
