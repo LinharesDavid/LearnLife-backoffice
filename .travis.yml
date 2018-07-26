@@ -5,9 +5,6 @@ node_js:
 install:
 - npm install
 
-after_success:
-  - npm test
-
 deploy:
   provider: heroku
   api_key: 31a548e9-4efc-4504-8b43-e3ba9c0f6beb
