@@ -11,5 +11,5 @@ branches:
 
 deploy:
   provider: heroku
-  api_key: 31a548e9-4efc-4504-8b43-e3ba9c0f6beb
+  api_key: bc87ba7a-fe31-44e9-9b26-f73e9dd824a0
   app: learnlife
